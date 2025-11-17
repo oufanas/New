@@ -1,0 +1,112 @@
+    /* Paleta temática: Azul espacial, gris oscuro, blanco */
+:root {
+    --azul-espacio: #0A1A2F;
+    --azul-claro: #13345B;
+    --gris-claro: #E6E6E6;
+    --blanco: #ffffff;
+    --gris-texto: #dddddd;
+}
+
+/* ---------------------------- */
+/* ESTILOS BASE (MOBILE-FIRST) */
+/* ---------------------------- */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--azul-espacio);
+    color: var(--gris-texto);
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: var(--azul-claro);
+    padding: 20px;
+    color: var(--blanco);
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.4);
+}
+.device-msg {
+    background-color: #ffcc00;
+    padding: 8px;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Contenedor principal */
+.container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px 0;
+}
+
+/* Tarjetas de contenido */
+.card {
+    background-color: var(--azul-claro);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.card h2 {
+    border-bottom: 2px solid var(--gris-claro);
+    padding-bottom: 5px;
+}
+
+/* Cajas informativas */
+.info-box {
+    background-color: rgba(255,255,255,0.1);
+    border-left: 4px solid #4fc3f7;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+/* Imágenes responsivas */
+.img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+}
+
+/* ---------------------------- */
+/* TABLET (600px - 1023px) */
+/* ---------------------------- */
+@media (min-width: 600px) {
+    .device-msg {
+        background-color: #ff9800;
+    }
+    .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .card {
+        width: 48%;
+    }
+    .card-1 {
+        width: 100%; /* primera tarjeta más grande */
+    }
+}
+
+/* ---------------------------- */
+/* ESCRITORIO (1024px+) */
+/* ---------------------------- */
+@media (min-width: 1024px) {
+    .device-msg {
+        background-color: #4caf50;
+    }
+    .container {
+        flex-wrap: nowrap;
+    }
+    .card {
+        width: 33.33%;
+    }
+}
