@@ -1,63 +1,206 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explorando el Sistema Solar - Página Responsiva</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Página Responsive Didáctica - Burdeos</title>
+    <style>
+        /* Variables de Color Burdeos y Blanco */
+        :root {
+            --color-burdeos-oscuro: #5C0016;
+            --color-burdeos-principal: #800020;
+            --color-burdeos-vivo: #B71C1C;
+            --color-fondo-claro: #F8F8F8;
+            --color-blanco: #FFFFFF;
+            --color-texto-gris: #444;
+        }
+
+        /* Estilos Base (Móvil Primero) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--color-fondo-claro);
+            color: var(--color-texto-gris);
+            text-align: center;
+        }
+
+        /* Encabezado Fijo */
+        header {
+            background-color: var(--color-burdeos-principal);
+            color: var(--color-blanco);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            margin: 0;
+        }
+
+        /* Indicador Didáctico */
+        #device-indicator {
+            padding: 10px;
+            margin-top: 10px;
+            font-weight: bold;
+            background-color: #ffcc00; /* Amarillo didáctico para el inicio */
+            border-radius: 4px;
+            color: var(--color-burdeos-oscuro);
+        }
+        
+        /* --------------------------------- */
+        /* Contenedor Principal de los Bloques */
+        /* --------------------------------- */
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column; /* POR DEFECTO: Columnas (Móvil) */
+            gap: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--color-blanco);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo de cada Bloque de Contenido */
+        .block {
+            padding: 20px;
+            border-radius: 6px;
+            text-align: left;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+        .block h2 {
+            color: var(--color-burdeos-principal);
+            border-bottom: 2px solid var(--color-burdeos-vivo);
+            padding-bottom: 5px;
+        }
+
+        /* Estilos Específicos para Bloques */
+        .block-1 { background-color: #f7e6e6; border-color: var(--color-burdeos-vivo); }
+        .block-2 { background-color: #f4ecec; border-color: var(--color-burdeos-principal); }
+        .block-3 { background-color: #f1e7e7; border-color: var(--color-burdeos-oscuro); }
+
+        /* Estilos para la Simulación */
+        .simulation-box {
+            background-color: var(--color-fondo-claro);
+            border: 1px dashed var(--color-burdeos-principal);
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .simulation-box strong {
+            color: var(--color-burdeos-vivo);
+        }
+        .sim-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ================================================= */
+        /* 1. MEDIA QUERY para TABLET (Ancho mínimo: 600px) */
+        /* ================================================= */
+        @media (min-width: 600px) {
+            #device-indicator {
+                background-color: #ff9800; /* Naranja */
+                content: "Dispositivo: TABLET (600px - 1023px) - Diseño: 2 Columnas";
+            }
+            .container {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .block {
+                width: 48%; 
+            }
+            .block-1 {
+                width: 100%; /* El bloque 1 ocupa toda la fila superior */
+                order: -1;
+            }
+        }
+
+        /* ==================================================== */
+        /* 2. MEDIA QUERY para ESCRITORIO (Ancho mínimo: 1024px) */
+        /* ==================================================== */
+        @media (min-width: 1024px) {
+            #device-indicator {
+                background-color: #4caf50; /* Verde */
+                content: "Dispositivo: ESCRITORIO (1024px+) - Diseño: 3 Columnas";
+            }
+            .container {
+                flex-wrap: nowrap;
+                gap: 30px;
+            }
+            .block {
+                width: calc(33.33% - 20px);
+            }
+            .block-1 {
+                width: calc(33.33% - 20px);
+                order: 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <h1>Explorando el Sistema Solar 🌌</h1>
-    <p class="device-msg">MÓVIL: 1 columna</p>
-</header>
+    <header>
+        <h1>Conceptos de Responsive Design</h1>
+        <div id="device-indicator">
+            Dispositivo: MÓVIL (Menos de 600px) - Diseño: 1 Columna
+        </div>
+    </header>
 
-<main class="container">
+    <main class="container">
+        
+        <div class="block block-1">
+            <h2>Bloque 1: El Principio Mobile-First 📱</h2>
+            <p>El diseño "Móvil Primero" (Mobile-First) significa priorizar la experiencia en pantallas pequeñas. Comenzar con la vista más restrictiva asegura que el contenido más importante sea accesible y la web cargue rápido, sin excesos de estilos innecesarios.</p>
+            
+            <div class="simulation-box">
+                <strong>Simulación de Vista Móvil:</strong> Los elementos se **apilan** para garantizar la legibilidad vertical.
+                
+            </div>
+            
+            <p>Usamos <code style="color: var(--color-burdeos-principal);">flex-direction: column;</code> para lograr este apilamiento.</p>
+        </div>
+        
+        <div class="block block-2">
+            <h2>Bloque 2: Puntos de Quiebre (Breakpoints) 📏</h2>
+            <p>Los puntos de quiebre son los anchos de pantalla donde el diseño cambia. En este ejemplo, tenemos dos puntos clave definidos mediante la regla CSS <code style="color: var(--color-burdeos-principal);">@media</code>:</p>
+            
+            <ul>
+                <li><strong>600px:</strong> Transición a vista de **Tablet**.</li>
+                <li><strong>1024px:</strong> Transición a vista de **Escritorio**.</li>
+            </ul>
 
-    <section class="card card-1">
-        <h2>1. ¿Qué es el Sistema Solar?</h2>
-        <p>El Sistema Solar es un conjunto de cuerpos celestes que orbitan alrededor del Sol. Incluye planetas, lunas, asteroides, cometas y más.</p>
+            <div class="simulation-box">
+                <strong>Simulación de Vista Tablet:</strong> Se usan **dos columnas** debajo del bloque principal, mejorando la densidad de información.
+                
+            </div>
 
-        <div class="info-box">
-            <strong>Dato:</strong> El Sol representa más del 99% de la masa total del Sistema Solar.
+            <p>En el punto de 600px, el CSS hace que los bloques se envuelvan y se alineen horizontalmente.</p>
+        </div>
+        
+        <div class="block block-3">
+            <h2>Bloque 3: Flexbox y Lazy Loading 🖼️</h2>
+            <p><strong>Flexbox</strong> nos permite controlar cómo se distribuyen los bloques de forma flexible. Mira cómo los tres bloques cambian de 1 columna a 3 sin modificar el HTML, solo con el CSS.</p>
+
+            <h3>Lazy Loading (Carga Perezosa)</h3>
+            <p>Para mejorar la velocidad, las imágenes fuera de la pantalla inicial deben usar **Lazy Loading**. Esto solo carga el recurso cuando el usuario se desplaza hacia él.</p>
+            
+            <div class="simulation-box">
+                <p>Esta imagen utiliza <code style="color: var(--color-burdeos-principal);">loading="lazy"</code>:</p>
+                <img class="sim-image" src="https://picsum.photos/400/200" alt="Ejemplo de Lazy Loading" loading="lazy">
+                
+                <strong>Simulación de Vista Escritorio:</strong> Todos los bloques se alinean en **tres columnas** para un máximo aprovechamiento de espacio.
+                
+            </div>
         </div>
 
-        <img src="https://picsum.photos/600/300?space1" loading="lazy" alt="Espacio" class="img">
-    </section>
-
-    <section class="card card-2">
-        <h2>2. Los Planetas 🪐</h2>
-        <p>Los ocho planetas del Sistema Solar se dividen en dos grupos:</p>
-
-        <ul>
-            <li><strong>Rocosos:</strong> Mercurio, Venus, Tierra y Marte</li>
-            <li><strong>Gaseosos:</strong> Júpiter, Saturno, Urano y Neptuno</li>
-        </ul>
-
-        <div class="info-box">
-            <strong>Dato curioso:</strong> ¡Júpiter es tan grande que todos los demás planetas cabrían dentro de él!
-        </div>
-
-        <img src="https://picsum.photos/600/300?space2" loading="lazy" alt="Planetas" class="img">
-    </section>
-
-    <section class="card card-3">
-        <h2>3. Exploración Espacial 🚀</h2>
-        <p>Las misiones espaciales han permitido obtener imágenes reales de los planetas, estudiar sus atmósferas y descubrir satélites desconocidos.</p>
-
-        <div class="info-box">
-            <strong>Misión destacada:</strong> <br> La Voyager 1 es el objeto humano más alejado de la Tierra.</div>
-
-        <img src="https://picsum.photos/600/300?space3" loading="lazy" alt="Nave espacial" class="img">
-    </section>
-
-</main>
-
-<footer>
-    <p>© 2025 - Proyecto Educativo del Sistema Solar</p>
-</footer>
-
+    </main>
+    
 </body>
 </html>
