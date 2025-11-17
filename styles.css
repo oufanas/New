@@ -1,112 +1,74 @@
-    /* Paleta temática: Azul espacial, gris oscuro, blanco */
-:root {
-    --azul-espacio: #0A1A2F;
-    --azul-claro: #13345B;
-    --gris-claro: #E6E6E6;
-    --blanco: #ffffff;
-    --gris-texto: #dddddd;
-}
-
-/* ---------------------------- */
-/* ESTILOS BASE (MOBILE-FIRST) */
-/* ---------------------------- */
-
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background-color: var(--azul-espacio);
-    color: var(--gris-texto);
-    text-align: center;
+    margin: 0;
+    background: #eef2f3;
+    color: #222;
 }
 
 /* Header */
-header {
-    background-color: var(--azul-claro);
-    padding: 20px;
-    color: var(--blanco);
-    position: sticky;
-    top: 0;
-    box-shadow: 0px 2px 10px rgba(0,0,0,0.4);
-}
-.device-msg {
-    background-color: #ffcc00;
-    padding: 8px;
-    border-radius: 6px;
-    margin-top: 10px;
-    font-weight: bold;
+.header-alt {
+    background: linear-gradient(to right, #3a7bd5, #00d2ff);
+    padding: 2rem;
+    color: white;
+    text-align: center;
 }
 
 /* Contenedor principal */
-.container {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 25px 0;
+.alt-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
 }
 
-/* Tarjetas de contenido */
+/* Cards */
 .card {
-    background-color: var(--azul-claro);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: left;
-    border: 1px solid rgba(255,255,255,0.2);
-}
-.card h2 {
-    border-bottom: 2px solid var(--gris-claro);
-    padding-bottom: 5px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Cajas informativas */
+/* Info box */
 .info-box {
-    background-color: rgba(255,255,255,0.1);
-    border-left: 4px solid #4fc3f7;
-    padding: 10px;
-    margin: 15px 0;
-    border-radius: 4px;
+    background: #e8f4ff;
+    border-left: 5px solid #3a7bd5;
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
 }
 
-/* Imágenes responsivas */
 .img {
     width: 100%;
-    border-radius: 8px;
-    margin-top: 10px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    border-radius: 12px;
+    margin-top: 1rem;
 }
 
-/* ---------------------------- */
-/* TABLET (600px - 1023px) */
-/* ---------------------------- */
-@media (min-width: 600px) {
-    .device-msg {
-        background-color: #ff9800;
+/* Layout alternado solo en pantallas grandes */
+@media (min-width: 900px) {
+
+    .alt-container {
+        grid-template-columns: repeat(2, 1fr);
     }
-    .container {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
+
+    .card.full {
+        grid-column: 1 / 3; /* ocupa ambas columnas */
     }
-    .card {
-        width: 48%;
+
+    .card.left {
+        grid-column: 1 / 2; /* izquierda */
     }
-    .card-1 {
-        width: 100%; /* primera tarjeta más grande */
+
+    .card.right {
+        grid-column: 2 / 3; /* derecha */
     }
 }
 
-/* ---------------------------- */
-/* ESCRITORIO (1024px+) */
-/* ---------------------------- */
-@media (min-width: 1024px) {
-    .device-msg {
-        background-color: #4caf50;
-    }
-    .container {
-        flex-wrap: nowrap;
-    }
-    .card {
-        width: 33.33%;
-    }
+/* Footer */
+.footer-alt {
+    text-align: center;
+    padding: 1.5rem;
+    background: #3a7bd5;
+    color: white;
+    margin-top: 2rem;
 }
